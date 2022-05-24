@@ -1,7 +1,5 @@
 package conflict;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -39,12 +37,8 @@ public class Master {
 		Customer customer1 = new Customer("A", orderA, shop, ecSite);
 		Customer customer2 = new Customer("B", orderB, shop, ecSite);
 
-		// 処理の開始時間を取得
-		Date start = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-		String startStr = format.format(start);
-		System.out.println(startStr);
-
+		long start = System.currentTimeMillis();
+		
 		customer1.start();
 		customer2.start();
 
@@ -59,10 +53,10 @@ public class Master {
 		System.out.println("鉛筆の在庫は" + shop.getPencil() + "本になった");
 		System.out.println("正しい鉛筆の在庫は" + trueStock + "本");
 
-		// 処理の終了時間を取得
-		Date end = new Date();
-		String endStr = format.format(end);
-		System.out.println(endStr);
+		long end = System.currentTimeMillis();
+		
+		System.out.println("処理時間："
+				+ "" + ((end - start) / 1000) + "秒");
 	}
 
 }
